@@ -411,9 +411,10 @@
 }
 
 - (void)saveImage:(NSData *)data title:(NSString *)title desc:(NSString *)desc block:(AssetResult)block {
-    PHAssetCreationRequest *request = [PHAssetCreationRequest creationRequestForAsset];
+    PHAssetCreationRequest *request;
     [[PHPhotoLibrary sharedPhotoLibrary]
             performChanges:^{
+                request = [PHAssetCreationRequest creationRequestForAsset];
                 PHAssetResourceCreationOptions *options = [PHAssetResourceCreationOptions new];
                 [options setOriginalFilename:title];
                 [request addResourceWithType:PHAssetResourceTypePhoto data:data options:options];
